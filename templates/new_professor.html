@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Professor</title>
+</head>
+<body>
+    <h1>New Professor</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form method="POST" action="{{ url_for('new_professor') }}">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.name.label }} {{ form.name() }}
+        </div>
+        <div>
+            {{ form.subjects.label }} {{ form.subjects() }}
+        </div>
+        <div>
+            {{ form.education.label }} {{ form.education() }}
+        </div>
+        <div>
+            {{ form.hire_date.label }} {{ form.hire_date() }}
+        </div>
+        <div>
+            <input type="submit" value="Add Professor">
+        </div>
+    </form>
+</body>
+</html>

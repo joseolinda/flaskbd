@@ -19,6 +19,19 @@ class students(db.Model):
         self.city = city
         self.addr = addr
         self.pin = pin
+        
+class professores(db.Model):
+    id = db.Column('professor_id', db.Integer, primary_key = True)
+    name = db.Column(db.String(100))
+    subjetcs = db.Column(db.String(150))
+    education = db.Column(db.String(100))
+    hire_date = db.Column(db.Date())
+    
+    def __init__(self, name, subjetcs, education, hire_date):
+        self.name = name
+        self.subjetcs = subjetcs
+        self.education = education
+        self.hire_date = hire_date
 
 @app.route('/')
 def show_all():
